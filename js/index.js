@@ -1,11 +1,12 @@
-const main = document.getElementById('main');
+const divs = document.querySelectorAll('div');
 
-main.addEventListener('click', function(event) {
-  alert('I was clicked!');
-});
+function bubble(e) {
+  // stop! that! propagation!
+  e.stopPropagation();
 
-const input = document.querySelector('input');
+  console.log(this.firstChild.nodeValue.trim() + ' bubbled');
+}
 
-input.addEventListener('keydown', function(e) {
-  console.log(e.which);
-});
+for (let i = 0; i < divs.length; i++) {
+  divs[i].addEventListener('click', bubble);
+}
